@@ -1,0 +1,24 @@
+{
+  "version": 3,
+  "skills": {
+    "browser-automation": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills.git",
+      "skillPath": "skills/browser-automation/SKILL.md",
+      "skillFolderHash": "5293417d142770a29d62801e47e207aeca9a33a6",
+      "installedAt": "2026-03-13T09:08:41.306Z",
+      "updatedAt": "2026-03-13T09:08:41.306Z"
+    },
+    "qr-code-generator": {
+      "source": "dkyazzentwatwa/chatgpt-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/dkyazzentwatwa/chatgpt-skills.git",
+      "skillPath": "qr-code-generator/SKILL.md",
+      "skillFolderHash": "f4519d88f1a847bf89276879e093e9eea83751eb",
+      "installedAt": "2026-03-13T09:10:41.040Z",
+      "updatedAt": "2026-03-13T09:10:41.040Z"
+    }
+  },
+  "dismissed": {}
+}
