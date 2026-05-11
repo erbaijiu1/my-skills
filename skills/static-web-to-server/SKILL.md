@@ -26,6 +26,21 @@ argument-hint: '页面或目录，例如 index.html、products/、about-us/'
 
 详细约定见 [repo layout reference](./references/repo-layout.md)。
 
+## 多项目部署与路径前缀约定 (Multi-Project Path Prefixing)
+
+为了支持多个克隆站点在同一台服务器或同一套网关下部署且互不冲突，我们统一采用“业务隔离前缀(Site Code)”机制。在迁移或初始化新克隆站点时，所有的前端页面路径、后台系统路径以及后端 API，都要带有业务前缀：
+
+1. **Frontend Nuxt (`web_transfer/frontend_nuxt`)**:
+   - `nuxt.config.ts` 中的 `app.baseURL` 应配置为 `/${siteCode}/` (如 `/shindary/`)，以便前台页面统一挂载到子目录。
+   - 所有的 API 请求（如 `useFetch`）前缀也必须包含对应前缀：`${config.public.apiBase}/${config.public.siteCode}/api/v1/public/...`。
+
+2. **Admin Dashboard (`web_transfer/admin_dashboard`)**:
+   - `vite.config.ts` 中的 `base` 应配置为 `/${siteCode}_admin/` (如 `/shindary_admin/`)，从而与前台页面彻底分离。
+   - 项目内部 Axios 实例的 `baseURL` 必须指向后端带前缀的真实地址（例如 `/${siteCode}/api/v1/admin/`）。
+
+3. **Backend FastAPI (`web_transfer/backend_dev`)**:
+   - 所有的 Public 或 Admin 的接口 API Router 必须加上 `/{siteCode}/` (如 `/shindary/api/v1/...`)。
+
 ## 硬性规则
 
 1. 在生成任何代码前，先检查 web_transfer/backend_dev、web_transfer/frontend_nuxt、web_transfer/admin_dashboard 的现有结构和依赖，优先沿用当前项目模式，不做无关重构。
