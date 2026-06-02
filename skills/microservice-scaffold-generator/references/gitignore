@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Node.js
+node_modules/
+dist/
+dist-*/
+
+# Log files
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db

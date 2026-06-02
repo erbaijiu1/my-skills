@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  {project_name}-backend:
+    build: ./backend
+    container_name: ${PROJECT_NAME}-backend
+    restart: always
+    environment:
+      - PROJECT_NAME=${PROJECT_NAME}
+      - DB_HOST=${DB_HOST:-mysql_db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-my@secure#password}
+      - DB_NAME=${DB_NAME:-{project_name}_db}
+    ports:
+      - "${APP_PORT}:8000"
+    volumes:
+      - ./{project_name}-backend-data:/app/data
+    depends_on:
+      - mysql_db
+
+  {project_name}-frontend:
+    build: ./frontend
+    container_name: ${PROJECT_NAME}-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - {project_name}-backend
+
+  mysql_db:
+    image: mysql:8.0
+    container_name: ${PROJECT_NAME}-mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${PROJECT_NAME}_db
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
