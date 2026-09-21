@@ -1,0 +1,4 @@
+interface:
+  display_name: "TSP Service Developer"
+  short_description: "Implement and verify TSP microservice requirements"
+  default_prompt: "Use $tsp-service-developer to implement this TSP requirement from the provided protocol and business description."

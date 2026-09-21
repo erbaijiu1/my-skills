@@ -73,3 +73,12 @@ Works well with: `agent-tool-builder`, `workflow-automation`, `computer-use-agen
 
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.
+
+## Automation code organization: proximity principle
+
+When writing or editing automation scripts and tests:
+
+- Keep each coherent action and its supporting setup together. Separate distinct phases, such as scenario preparation, user actions, and assertions, with one blank line; apply the same grouping to substages inside loops.
+- Put the blank line before a phase comment and keep that comment adjacent to its code. Place phase-specific locators and expected-result preparation in the phase that uses them when their scope permits.
+- Do not separate every statement or force numbered comments onto trivial tests. Preserve ordering required for reliable automation, such as registering a popup wait before the triggering action; whitespace alone must not change execution behavior.
+- Review touched scripts for logical grouping as well as correctness, without reformatting unrelated tests or files.

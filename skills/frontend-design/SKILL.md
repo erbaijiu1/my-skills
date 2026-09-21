@@ -40,3 +40,12 @@ Interpret creatively and make unexpected choices that feel genuinely designed fo
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
 Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+
+## Code organization: proximity principle
+
+When writing or editing component, event-handler, or data-loading code:
+
+- Group statements serving the same purpose together; separate distinct stages or substages with one blank line, including inside loops. For example, keep input preparation, remote loading, and UI-state updates visually distinct when they represent separate steps.
+- Put a stage comment directly above all code belonging to that stage, including its local preparation. Place the separating blank line before the comment, not between the comment and its code.
+- Keep closely related declarations and operations together. Do not add blank lines mechanically after every statement or force numbered comments onto short handlers; respect the project's language and formatter conventions.
+- During review, check that spacing communicates logical boundaries. Apply this to touched code without reformatting unrelated files; in templates, preserve whitespace that affects rendered output.
